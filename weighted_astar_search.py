@@ -17,7 +17,8 @@ class WeightedAStarSearch(Search):
       self.name = "astar"
 
   def search(self):
-    raise NotImplementedError
+    """
+    """
 
 if __name__ == "__main__":
   problem = pancake_problem.generate_random_problem(5)

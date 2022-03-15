@@ -2,7 +2,6 @@ from breadth_first_search import BreadthFirstSearch
 from contextlib import contextmanager
 from depth_first_search import DepthFirstSearch
 from pancake_problem import PancakeProblem
-import signal
 from weighted_astar_search import WeightedAStarSearch
 
 SIMPLE_PANCAKE_PROBLEMS = [
@@ -45,24 +44,12 @@ class TimeLimitExceededError(Exception):
 
 
 def run_informed_searches(problem):
-  @contextmanager
-  def time_limit(seconds):
-    def signal_handler(signum, frame):
-      raise TimeLimitExceededError
-
-    signal.signal(signal.SIGALRM, signal_handler)
-    signal.alarm(seconds)
-    try:
-      yield
-    finally:
-      signal.alarm(0)
-
   for w in [1, 1.2, 1.5, 2]:
     print(f"\nWeighted A* Search with w={w}:")
     try:
-      with time_limit(180):
-        wastar = WeightedAStarSearch(problem, w, print_statistics=True)
-        wastar.run()
+      wastar = WeightedAStarSearch(problem, w, print_statistics=True,
+                                   time_limit=180)
+      wastar.run()
     except TimeLimitExceededError as e:
       print("Exceeded time limit of 3 minutes...")
 

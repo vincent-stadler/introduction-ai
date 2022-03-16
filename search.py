@@ -1,3 +1,4 @@
+# Stadler Ly Hofmann
 import search_problem
 import time
 

@@ -1,3 +1,4 @@
+# Stadler Ly Hofmann
 from breadth_first_search import BreadthFirstSearch
 from contextlib import contextmanager
 from depth_first_search import DepthFirstSearch

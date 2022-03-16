@@ -1,3 +1,4 @@
+# Stadler Ly Hofmann
 import pancake_problem
 
 from pancake_problem import PancakeProblem

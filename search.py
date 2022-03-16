@@ -3,10 +3,18 @@ import time
 
 
 class SearchNode:
+  occ = 0
   def __init__(self, state, parent, g):
     self.state = state
     self.parent = parent
     self.g = g
+    SearchNode.occ += 1
+    self.num = SearchNode.occ
+
+  def __gt__(self, other):
+    return self.num < other.num
+  def __lt__(self, other):
+    return not self.__gt__(other)
 
 
 class Search:
